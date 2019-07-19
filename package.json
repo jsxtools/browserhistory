@@ -1,0 +1,82 @@
+{
+  "name": "browserhistory",
+  "version": "0.1.0",
+  "description": "...",
+  "author": "Jonathan Neal <jonathantneal@hotmail.com>",
+  "license": "CC0-1.0",
+  "repository": "jonathantneal/browserhistory",
+  "homepage": "https://github.com/jonathantneal/browserhistory#readme",
+  "bugs": "https://github.com/jonathantneal/browserhistory/issues",
+  "main": "index.js",
+  "module": "index.mjs",
+  "browser": "browser.js",
+  "files": [
+    "browser.js",
+    "browser.mjs",
+    "index.js",
+    "index.mjs"
+  ],
+  "scripts": {
+    "build": "npm run build:browser && npm run build:node",
+    "build:browser": "cross-env NODE_ENV=browser rollup --config",
+    "postbuild:browser": "npm run size:browser",
+    "build:node": "cross-env NODE_ENV=node rollup --config",
+    "postbuild:node": "npm run size:node",
+    "test": "npm run test:lint",
+    "test:lint": "eslint src/{*,**/*}.js --cache --ignore-path .gitignore --quiet",
+    "pretest:tape": "npm run build:node",
+    "prepublishOnly": "npm run test && npm run build"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "cross-env": "^5.2.0",
+    "eslint": "^6.0.1",
+    "gzip-size-cli": "^3.0.0",
+    "nodemon": "^1.19.1",
+    "pre-commit": "^1.2.2",
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-terser": "^5.1.1"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es6": true,
+      "node": true
+    },
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "impliedStrict": true,
+      "sourceType": "module"
+    },
+    "root": true,
+    "rules": {
+      "no-console": [
+        0,
+        {
+          "allow": [
+            "warn",
+            "error"
+          ]
+        }
+      ]
+    }
+  },
+  "keywords": [
+    "args",
+    "arguments",
+    "class",
+    "function",
+    "javacript",
+    "js",
+    "prototype",
+    "web"
+  ]
+}
